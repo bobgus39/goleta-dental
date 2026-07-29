@@ -100,7 +100,9 @@ export default function AppNavbar() {
               : <Menu size={22} strokeWidth={2.5} />
             }
           </button>
-          <NavbarBrand>
+          {/* El logo solo aparece en desktop (≥1024px): en móvil y tablet
+              compite por espacio con el menú y el CTA */}
+          <NavbarBrand className="hidden lg:flex">
             <ToothLogo scrolled={isScrolled || isMenuOpen} />
           </NavbarBrand>
         </NavbarContent>
@@ -127,7 +129,7 @@ export default function AppNavbar() {
           <NavbarItem>
             <Button
               size="sm"
-              className="text-white font-semibold shadow-aqua hover:scale-105 transition-all duration-300"
+              className="text-[11px] text-white font-semibold shadow-aqua hover:scale-105 transition-all duration-300"
               radius="full"
               style={{ background: 'linear-gradient(135deg, #0ECFB4, #0094FF)' }}
               onPress={() => scrollTo('cita')}
