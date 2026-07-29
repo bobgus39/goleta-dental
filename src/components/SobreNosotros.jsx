@@ -73,7 +73,7 @@ export default function SobreNosotros() {
               {/* Bottom badge */}
               <div className="absolute bottom-6 left-6 right-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl px-4 py-3 flex items-center gap-3">
                 <MapPin size={18} className="text-aqua-400 flex-shrink-0" />
-                <span className="text-white/80 text-sm">Av. Costa Blanca, Playa de San Juan, Alicante</span>
+                <span className="text-white/80 text-sm">Avinguda Goleta, 25 · Local 8 · 03540 Alicante</span>
               </div>
             </div>
 

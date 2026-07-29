@@ -71,7 +71,7 @@ export default function Footer() {
             {/* Contact mini */}
             <div className="space-y-2.5">
               {[
-                { icon: MapPin, text: 'Av. Costa Blanca, Playa de San Juan' },
+                { icon: MapPin, text: 'Avinguda Goleta, 25 · Local 8 · Alicante' },
                 { icon: Phone, text: '965 000 000', href: 'tel:+34965000000' },
                 { icon: Mail, text: 'info@goletadental.es', href: 'mailto:info@goletadental.es' },
               ].map(({ icon: Icon, text, href }) => (

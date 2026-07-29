@@ -5,7 +5,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Dirección',
-    lines: ['Av. Costa Blanca, 12 · Local 3', 'Playa de San Juan, Alicante', '03540, España'],
+    lines: ['Avinguda Goleta, 25 · Local 8', 'Playa de San Juan, Alicante', '03540, España'],
     link: null,
     color: 'from-aqua-400 to-blue-500',
   },
@@ -165,7 +165,7 @@ export default function Contacto() {
             <div className="relative">
               <iframe
                 title="Ubicación Clínica Goleta Dental - Playa de San Juan, Alicante"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-0.430%2C38.355%2C-0.395%2C38.375&layer=mapnik&marker=38.365%2C-0.410"
+                src="https://maps.google.com/maps?q=Avinguda+Goleta+25+Local+8+03540+Alicante&output=embed&z=17"
                 width="100%"
                 height="380"
                 className="w-full border-0 block"
@@ -180,9 +180,9 @@ export default function Contacto() {
                 </div>
                 <div>
                   <p className="font-semibold text-navy-700 text-sm">Clínica Goleta Dental</p>
-                  <p className="text-gray-400 text-xs">Av. Costa Blanca, Playa de San Juan · Alicante</p>
+                  <p className="text-gray-400 text-xs">Avinguda Goleta, 25 · Local 8 · Playa de San Juan</p>
                   <a
-                    href="https://maps.google.com/?q=Playa+de+San+Juan,+Alicante"
+                    href="https://maps.google.com/?q=Avinguda+Goleta,+25,+Local+8,+03540+Alicante"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-aqua-500 text-xs font-medium hover:underline mt-0.5 inline-block"

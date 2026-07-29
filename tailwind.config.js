@@ -1,9 +1,22 @@
+import path from 'node:path'
+import { createRequire } from 'node:module'
+import { heroui } from '@heroui/theme'
+
+const require = createRequire(import.meta.url)
+
+// Resolvemos la ruta real de @heroui/theme en vez de asumir que npm la hoistea
+// a ./node_modules/@heroui/theme (con pnpm o con deps anidadas no lo hace y
+// Tailwind acabaría purgando todas las clases de los componentes).
+const herouiContent = path
+  .join(path.dirname(require.resolve('@heroui/theme/package.json')), 'dist/**/*.{js,mjs,ts,jsx,tsx}')
+  .replace(/\\/g, '/')
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}"
+    herouiContent,
   ],
   theme: {
     extend: {
@@ -68,6 +81,66 @@ export default {
   },
   darkMode: "class",
   plugins: [
+    heroui({
+      prefix: 'heroui',
+      defaultTheme: 'light',
+      defaultExtendTheme: 'light',
+      layout: {
+        // Radios alineados con el resto de la web (rounded-xl / rounded-2xl)
+        radius: { small: '0.5rem', medium: '0.75rem', large: '1rem' },
+        borderWidth: { small: '1px', medium: '1px', large: '2px' },
+        disabledOpacity: '0.5',
+      },
+      themes: {
+        light: {
+          colors: {
+            background: '#FFFFFF',
+            foreground: '#0F2554',
+            // primary = navy de marca
+            primary: {
+              50: '#EEF1FB',
+              100: '#C8D2EE',
+              200: '#9DB5DF',
+              300: '#6D8DCF',
+              400: '#4066BF',
+              500: '#2B4BAF',
+              600: '#1B3A8F',
+              700: '#0F2554',
+              800: '#091A3D',
+              900: '#04102A',
+              DEFAULT: '#0F2554',
+              foreground: '#FFFFFF',
+            },
+            // secondary = turquesa de marca
+            secondary: {
+              50: '#E0FBF8',
+              100: '#B3F5EC',
+              200: '#7AEEDD',
+              300: '#38E4CB',
+              400: '#0ECFB4',
+              500: '#00B79C',
+              600: '#009A81',
+              700: '#007C67',
+              800: '#005F4E',
+              900: '#004135',
+              DEFAULT: '#0ECFB4',
+              foreground: '#FFFFFF',
+            },
+            // Anillo de foco accesible en toda la UI (inputs, botones, navbar)
+            focus: '#0ECFB4',
+          },
+        },
+        dark: {
+          colors: {
+            background: '#04102A',
+            foreground: '#EEF1FB',
+            primary: { DEFAULT: '#4066BF', foreground: '#FFFFFF' },
+            secondary: { DEFAULT: '#0ECFB4', foreground: '#04102A' },
+            focus: '#38E4CB',
+          },
+        },
+      },
+    }),
     function({ addUtilities }) {
       addUtilities({
         '.text-gradient-aqua': {
